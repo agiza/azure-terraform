@@ -23,4 +23,5 @@ echo "---- ARM environment variables"
 env | grep ARM
 #
 echo "--- Initializing Terraform"
-terraform init -backend-config="storage_account_name=$ARM_STORAGE_ACCOUNT" -backend-config="container_name=tfstate" -backend-config="access_key=$ARM_STORAGE_ACCT_KEY" -backend-config="key=codelab.microsoft.tfstate"
+#terraform init -backend-config="storage_account_name=$ARM_STORAGE_ACCOUNT" -backend-config="container_name=tfstate" -backend-config="access_key=$ARM_STORAGE_ACCT_KEY" -backend-config="key=codelab.microsoft.tfstate"
+terraform init
