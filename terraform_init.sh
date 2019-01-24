@@ -18,8 +18,12 @@ export ARM_SUBSCRIPTION_ID=$(az account show --query "{subscriptionId:id}" --out
 export ARM_TENANT_ID=$(az account show --query "{tenantId:tenantId}" --output tsv)
 export ARM_STORAGE_ACCOUNT=$4
 export ARM_ACCESS_KEY=$(az keyvault secret show --name "$ARM_STORAGE_ACCOUNT" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
+export TF_VAR_client_id=$ARM_CLIENT_ID
+export TF_VAR_client_secret=$ARM_CLIENT_SECRET
 #
 env | grep ARM
+echo "---"
+env | grep TF_VAR_
 #
 echo "--- Initializing Terraform"
 terraform init
