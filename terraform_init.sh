@@ -22,4 +22,4 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name "$ARM_STORAGE_ACCOUNT" --
 env | grep ARM
 #
 echo "--- Initializing Terraform"
-terraform init 
+terraform init
