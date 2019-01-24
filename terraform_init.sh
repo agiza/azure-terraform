@@ -17,10 +17,9 @@ export ARM_CLIENT_SECRET=$(az keyvault secret show --name "$ARM_CLIENT_ID" --vau
 export ARM_SUBSCRIPTION_ID=$(az account show --query "{subscriptionId:id}" --output tsv)
 export ARM_TENANT_ID=$(az account show --query "{tenantId:tenantId}" --output tsv)
 export ARM_STORAGE_ACCOUNT=$4
-export ARM_STORAGE_ACCT_KEY=$(az keyvault secret show --name "$ARM_STORAGE_ACCOUNT" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
+export ARM_ACCESS_KEY=$(az keyvault secret show --name "$ARM_STORAGE_ACCOUNT" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
 #
-echo "---- ARM environment variables"
 env | grep ARM
 #
 echo "--- Initializing Terraform"
-terraform init -backend-config="storage_account_name=$ARM_STORAGE_ACCOUNT" -backend-config="container_name=tfstate" -backend-config="access_key=$ARM_STORAGE_ACCT_KEY" -backend-config="key=codelab.microsoft.tfstate"
+terraform init 
