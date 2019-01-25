@@ -17,6 +17,7 @@ export ARM_CLIENT_SECRET=$(az keyvault secret show --name "$ARM_CLIENT_ID" --vau
 export ARM_SUBSCRIPTION_ID=$(az account show --query "{subscriptionId:id}" --output tsv)
 export ARM_TENANT_ID=$(az account show --query "{tenantId:tenantId}" --output tsv)
 export TF_VAR_storage_acct=$4
+export TF_VAR_blob_container=tfstate
 export ARM_ACCESS_KEY=$(az keyvault secret show --name "$TF_VAR_storage_acct" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
 export TF_VAR_client_id=$ARM_CLIENT_ID
 export TF_VAR_client_secret=$ARM_CLIENT_SECRET
@@ -26,4 +27,4 @@ echo "---"
 env | grep TF_VAR_
 #
 echo "--- Initializing Terraform"
-terraform init --backend-config "storage_account_name=$TF_VAR_storage_acct"
+terraform init --backend-config "storage_account_name=$TF_VAR_storage_acct" --backend-config "container_name=$TF_VAR_blob_container"

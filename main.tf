@@ -5,7 +5,6 @@ provider "azurerm" {
 
 terraform {
     backend "azurerm" {
-    container_name       = "tfstate"
-    key                  = "smoke-test"
+    key = "smoke-test"
   }
 }
