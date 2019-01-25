@@ -16,8 +16,8 @@ export ARM_CLIENT_ID=$3
 export ARM_CLIENT_SECRET=$(az keyvault secret show --name "$ARM_CLIENT_ID" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
 export ARM_SUBSCRIPTION_ID=$(az account show --query "{subscriptionId:id}" --output tsv)
 export ARM_TENANT_ID=$(az account show --query "{tenantId:tenantId}" --output tsv)
-export ARM_STORAGE_ACCOUNT=$4
-export ARM_ACCESS_KEY=$(az keyvault secret show --name "$ARM_STORAGE_ACCOUNT" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
+export TF_VAR_storage_acct=$4
+export ARM_ACCESS_KEY=$(az keyvault secret show --name "$TF_VAR_storage_acct" --vault-name "$ARM_KEY_VAULT" --query "value" --output tsv)
 export TF_VAR_client_id=$ARM_CLIENT_ID
 export TF_VAR_client_secret=$ARM_CLIENT_SECRET
 #

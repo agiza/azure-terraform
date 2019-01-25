@@ -5,7 +5,7 @@ provider "azurerm" {
 
 terraform {
     backend "azurerm" {
-    storage_account_name = "ghtsp2terraform"
+    storage_account_name = "${var.storage_acct}"
     container_name       = "tfstate"
     key                  = "smoke-test"
   }
