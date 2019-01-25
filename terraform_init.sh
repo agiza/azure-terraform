@@ -26,4 +26,4 @@ echo "---"
 env | grep TF_VAR_
 #
 echo "--- Initializing Terraform"
-terraform init
+terraform init --backend-config "storage_account_name=$TF_VAR_storage_acct"
